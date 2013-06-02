@@ -1,0 +1,30 @@
+﻿<header class="row">
+    <div class="navbar">
+        <div class="navbar-inner">
+            @Html.ActionLink("ASCEND Project", "Index", "Home", null, new { @class = "brand" })
+            <ul class="nav">
+                @{
+                    var controller = this.ViewContext.Controller;
+                    var controllerName = controller.ControllerContext.RouteData.Values["controller"].ToString();
+                 }
+
+                @if(controllerName.Contains("Job")){
+                    <text><li class="active"></text>
+                  }else
+                  {
+                  <text><li></text>
+                }
+                <a href="@Url.Action("Index", "Job")">Discover Jobs</a></li>
+                @if(controllerName.Contains("Classroom")){
+                    <text><li class="active"></text>
+                  }else
+                  {
+                  <text><li></text>
+                }
+                <a href="@Url.Action("Index", "Classroom")">Classroom</a></li>
+                
+                <li><a href="#">About</a></li>
+            </ul>
+        </div>
+    </div>
+</header>

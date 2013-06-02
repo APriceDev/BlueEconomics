@@ -1,0 +1,42 @@
+# User-specific files
+*.suo
+*.user
+*.sln.docstates
+
+# Build results
+
+[Dd]ebug/
+[Rr]elease/
+x64/
+build/
+[Bb]in/
+[Oo]bj/
+
+# Visual Studio profiler
+*.psess
+*.vsp
+*.vspx
+
+# ReSharper is a .NET coding add-in
+_ReSharper*/
+*.[Rr]e[Ss]harper
+
+# Publish Web Output
+*.Publish.xml
+*.pubxml
+
+# Others
+sql/
+*.Cache
+ClientBin/
+[Ss]tyle[Cc]op.*
+~$*
+*~
+*.dbmdl
+*.[Pp]ublish.xml
+*.pfx
+*.publishsettings
+
+# SQL Server files
+App_Data/*.mdf
+App_Data/*.ldf
