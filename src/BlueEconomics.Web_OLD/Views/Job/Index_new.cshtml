@@ -1,0 +1,75 @@
+@{
+    Layout = null;
+    @model BlueEconomics.Web.Controllers.IndexViewModel
+}
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>ASCEND | Jobs</title>
+        <meta name="description" content="">
+        <link rel="stylesheet" href="~/Content/css/bootstrap.min.css">
+        <style>
+            body {
+                padding-top: 10px;
+                padding-bottom: 40px;
+            }
+        </style>
+        <link rel="stylesheet" href="~/Content/css/bootstrap-responsive.min.css">
+        <link rel="stylesheet" href="~/Content/css/main.css">
+        <script src="~/Scripts/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+        <script src="~/Scripts/vendor/jquery-1.9.1.min.js"></script>
+        <script>
+            $(function() {
+                //loading all industries
+
+                $.ajax({
+                    url: 'Home/Getindustries',
+                    success: function(data) {
+                        console.dir(data);
+
+                        var html = "";
+                        $(data).each(function(i) {
+                            console.dir(this.Name);
+                            html += '<li class="item" onclick="javascript:loadOccupation(' + this.Id + ')">' + this.Name + '</li>';
+                        });
+                        $('#industries').html(html);
+
+                    }
+                });
+
+                $('#checkbox-1-4').click(function() {
+                    alert('call ajax here to filter');
+
+                });
+
+            });
+            get close https:// 
+            function loadOccupation(id) {
+                $.ajax({
+                    url: 'Home/GetOccupation?id='+id,
+                    success: function (data) {
+                        var html = "";
+                        $(data).each(function () {
+                            html += '<h5 onclick=javascript:loadDesc("'+this.Description+"');>" + this.Name + "</h5>" +
+                                '<span class="good">' + this.EntryLevelEducation + '</span>';
+                        });
+                        $('#jobsList').html(html);
+                    }
+                });
+            }
+            
+            function loadDesc(desc) {
+                $('#jobDesc').html(desc);
+            }
+            
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

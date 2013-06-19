@@ -3,14 +3,11 @@
 // 27
 // Michel Oliveira
 
-using System.Collections.Generic;
-using BlueEconomics.Web.Models;
-
 namespace BlueEconomics.Web.ViewModels
 {
     public class JobViewModel
     {
-        public List<Industry> Industries { get; set; }
+        //public List<Industry> Industries { get; set; }
 
         public int? IdIndustry { get; set; }
 

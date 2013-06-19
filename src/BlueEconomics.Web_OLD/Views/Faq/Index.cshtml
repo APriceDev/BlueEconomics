@@ -1,0 +1,74 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <!-- search bar -->
+    <div class="span12">
+        <p>
+            <form class="navbar-form form-search">
+                <input type="text" data-provide="typeahead" class="span5 input-medium search-query" placeholder="Start by typing your question or keywords here">
+                <button type="submit" class="btn btn-primary"><i class="icon-search icon-white"></i>Search </button>
+            </form>
+        </p>
+        <!-- <p><a class="btn" href="#">View details &raquo;</a></p> -->
+    </div>
+    <!-- search bar -->
+
+    <div class="row">
+        <div class="span3">
+            <h4>Filter by Keywords</h4>
+            <div class="well industry">
+                <div>
+                    <li>
+                        <input type="checkbox" id="checkbox-1-1" class="regular-checkbox" /><span>Training (7)</span></li>
+                    <li>
+                        <input type="checkbox" id="checkbox-1-2" class="regular-checkbox" /><span>School Review (7)</span></li>
+                    <li>
+                        <input type="checkbox" id="checkbox-1-3" class="regular-checkbox" /><span>Industry Development (3)</span></li>
+                </div>
+            </div>
+        </div>
+        <div class="span4 no-gutter">
+            <h4>Questions</h4>
+            <ul class="well jobs">
+                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ut libero ante, eleifend commodo nisl?</li>
+                <li>Sed scelerisque ullamcorper mauris a ornare?</li>
+                <li>Quisque sit amet eros lacus, sit amet ullamcorper urna. Etiam vel sapien eu felis scelerisque malesuada et vitae augue?</li>
+            </ul>
+        </div>
+        <div class="span5 no-gutter">
+            <h4>Answer</h4>
+            <div class="well detail">
+                <h4>Quisque sit amet eros lacus, sit amet ullamcorper urna. Etiam vel sapien eu felis scelerisque malesuada et vitae augue?</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In mollis convallis ultricies. Morbi egestas, leo id ornare adipiscing, lectus nisi pulvinar nibh, molestie imperdiet eros mi id urna. Sed accumsan blandit dolor ac ullamcorper. Vestibulum ac orci nunc, id pharetra quam. Aenean suscipit erat quis ipsum consequat ac blandit metus dictum. Etiam erat ligula, blandit vitae aliquet vel, convallis et risus. Nulla facilisi. Vivamus felis erat, ultricies non molestie vel, feugiat sed arcu. Sed mattis egestas felis ut tempus. Suspendisse vulputate egestas nulla ac hendrerit.</p>
+                <p>Pellentesque vestibulum adipiscing nisl non convallis. Donec sit amet nisi diam, quis aliquet nisl. Ut nec convallis magna. Fusce vitae congue tortor. Aenean fermentum, lectus sed commodo vulputate, risus tellus imperdiet libero, quis facilisis nisl nulla non nunc. Phasellus luctus bibendum nunc tristique laoreet. Morbi fringilla, tortor a placerat molestie, elit sem aliquet neque, ut porta odio lectus et mauris. Nunc accumsan, justo sit amet egestas scelerisque, nisi sapien molestie enim, a ultrices sapien ante at enim. Proin nisl neque, fermentum malesuada rhoncus vel, adipiscing id nunc. Maecenas vel bibendum erat. Duis vel arcu vitae nunc tincidunt iaculis. Praesent laoreet posuere arcu, in iaculis lacus fermentum eget.</p>
+                <p>Nulla semper commodo aliquam. Proin ut lorem eu lacus auctor consectetur non at lectus. Sed a arcu urna, at lobortis tellus. Sed auctor luctus est, quis porttitor eros vehicula non. Nam a euismod massa. Maecenas tristique ornare mi a lobortis. Vestibulum gravida metus vel urna feugiat tincidunt. Mauris at mauris ac urna scelerisque fringilla in sed odio. Sed vehicula orci id nisi aliquam at posuere leo imperdiet. Nunc nibh enim, rhoncus at condimentum non, pellentesque ac ligula. Pellentesque in diam nunc, eget vehicula urna. Etiam iaculis lectus in lorem vulputate mollis.</p>
+            </div>
+        </div>
+    </div>
+    <!-- end Q&A session -->
+
+    <!-- "Ask a question" starts -->
+    <div class="row">
+        <div class="span5">
+            <a type="button" class="btn btn-primary btn-large btn-success" data-toggle="collapse" data-target="#ask">Didn't see your question? Ask us</a>
+        </div>
+        <div id="ask" class="span7 collapse in">
+            <form>
+                <legend>Post a question</legend>
+                <textarea rows="3" class="span6" placeholder="Enter your question here"></textarea></br>
+				   
+                <input type="text" class="span6" placeholder="Add tags (Optional)"></br>
+				   
+                <input type="text" class="span6" placeholder="Your email address (Optional)"></br>
+				   
+                <span class="help-block"><small>We will notify you when your question is answered, but this is optional.</br> We won't spam you, we promise. :-)</small></span>
+                <button type="submit" class="btn">Submit</button>
+            </form>
+        </div>
+    </div>
+    <!-- "Ask a question" ends -->
+
+    <hr>

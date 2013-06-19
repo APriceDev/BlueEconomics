@@ -1,0 +1,17 @@
+Header checksum is valid.
+Source      : D:\Projects\blueeconomics\src\BlueEconomics.Web\App_Data\BlueDB.sdf
+Destination : D:\Projects\blueeconomics\src\BlueEconomics.Web\App_Data\BlueDB.sdf.B486457.tmp
+Repairing - verMajor: 4, verMinor: 0, verBuild: 8476, verPoint: 1
+Time - 2013-24-05 10:29:59.806
+
+ All Pages have valid checksum.
+Parse the db file and build list of tables ... DONE.
+Cleanup Page list ... DONE.
+Scan bad pages ... DONE.
+Parse SysObjects table ... DONE.
+Copy Schema ... DONE.
+Copy Tables ... DONE.
+Copy Constraints ... DONE.
+Copy Indexes ... DONE.
+Copy Constraints ... DONE.
+

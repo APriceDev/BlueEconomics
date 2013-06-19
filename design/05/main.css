@@ -1,0 +1,180 @@
+
+body{
+	background-color: rgba(236,236,236,0);
+}
+
+.hero-unit
+{
+	background-color: #16678F;
+	background-image: url('../img/empire_state_night.png');
+	color: #FFF;
+}
+
+footer{
+	text-align: center;
+	font-size: .8em;
+}
+
+.no-gutter{
+	margin-left: 0 !important;
+}
+
+.brand-logo{
+	font-size: 2em;
+	font-weight: bold;
+	line-height: 40px;
+	height: 40px;
+	padding: 6px;
+}
+
+#logo{
+	color: #3366CC;
+}
+
+/* industry */
+
+.industry{
+list-style-type: none;
+margin-left: 0;
+}
+
+.industry > li{
+	color:#2a2a2a;
+	padding: 3px;
+}
+
+.industry > li:hover{
+	background-color: #D9D9DC;
+}
+
+.industry > li.highlight{
+	background-color: #3333CC;
+	color: #FF0;
+}
+
+.selected {
+    background-color: #D9D9DC;
+    font-weight: bold;
+}
+
+/* job display css */
+#jobsList > li{
+	padding:10px 5px 10px 5px;
+}
+
+#jobsList > li:hover{
+	background-color:#D9D9DC;
+}
+
+.good{
+	background-color: #43b51a;
+	height: 5px;
+	width: 90%;
+	display: block;
+} 
+
+.bad{
+	background-color: #dfd80b;
+	height: 5px;
+	width: 50%;
+	display: block;
+}
+
+.ugly{
+	background-color: #99471d;
+	height: 5px;
+	width: 30%;
+	display: block;
+}
+
+/* checkbox */
+.regular-checkbox {
+    -webkit-appearance: none;
+    background-color: #fafafa;
+    border: 1px solid #cacece;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
+    padding: 9px;
+    border-radius: 3px;
+    display: inline-block;
+    position: relative;
+}
+
+.regular-checkbox:active, .regular-checkbox:checked:active {
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 1px 3px rgba(0,0,0,0.1);
+}
+ 
+.regular-checkbox:checked {
+    background-color: #3399CC;
+    border: 1px solid #adb8c0;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.1);
+    color: #FFF;
+}
+
+.regular-checkbox:checked:after {
+    content: '\2714';
+    font-size: 14px;
+    position: absolute;
+    top: 0px;
+    left: 3px;
+    color: #FFF;
+}
+
+/* wage */
+
+select{
+	background-color: #3399CC;
+	color: #FFF;
+}
+
+input[type="range"]
+{
+width:220px;
+display:block;
+margin-top:10px;
+background-color:#3399CC;
+}
+
+/* main menu */
+
+/*
+.nav-menu {
+  margin-bottom: 20px;
+  margin-left: 0;
+  list-style: none;
+}
+
+.nav-menu > span > a {
+	color: #FFF;
+	background-color: #3399CC;
+	display: block;
+	line-height: 40px;
+	height: 40px;
+	width: 100px;
+	padding: 6px;
+	text-align:center;
+	border-left: 2px solid #3366CC;
+}
+
+.nav-menu > span > a:hover,
+.nav-menu > span > a:focus {
+  text-decoration: none;
+  background-color: #3366CC;
+}
+
+.nav-menu > .active > a {
+  text-decoration: none;
+  background-color: #3366CC;
+}
+*/
+
+
+
+
+
+
+
+
+
+
+
+

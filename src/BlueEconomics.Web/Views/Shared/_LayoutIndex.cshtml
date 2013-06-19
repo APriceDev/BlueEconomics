@@ -12,22 +12,20 @@
     <link href="@Url.Content("~/Content/css/bootstrap.min.css")" rel="stylesheet" />
     <link href="@Url.Content("~/Content/css/bootstrap-responsive.min.css")" rel="stylesheet" />
     <link href="@Url.Content("~/Content/css/main.css")" rel="stylesheet"/>
-    <script src="@Url.Content("~/Scripts/vendor/jquery-1.9.1.min.js")"></script>
-    <script src="@Url.Content("~/Scripts/vendor/bootstrap.min.js")"></script>
-    <script src="@Url.Content("~/Scripts/modernizr-2.6.2.js")"></script>
+    <script src="@Url.Content("~/Content/js/jquery-1.9.1.min.js")"></script>
+    <script src="@Url.Content("~/Content/js/bootstrap.min.js")"></script>
+    <script src="@Url.Content("~/Content/js/modernizr-2.6.2.js")"></script>
 </head>
 <body>
     <!--[if lt IE 7]>
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
-    <!-- This code is taken from http://twitter.github.com/bootstrap/examples/hero.html -->
     <div class="container">
         @RenderBody()
     </div>
     <footer>
         <p>&#169; Blue Economics 2013</p>
     </footer>
-
     @RenderSection("scripts", required: false)
 </body>
 </html>

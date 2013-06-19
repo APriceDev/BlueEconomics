@@ -1,0 +1,43 @@
+﻿@model BlueEconomics.Web.ViewModels.HomeViewModel
+
+@{
+    ViewBag.Title = "ASCEND Project | Home";
+    Layout = "~/Views/Shared/_LayoutIndex.cshtml";
+}
+
+
+        <style>
+            body {
+                padding-top: 40px;
+                padding-bottom: 40px;
+            }
+        </style>
+<div class="container">
+
+    <!-- Main hero unit for a primary marketing message or call to action -->
+    <div class="hero-unit">
+        <h1>ASCEND Project</h1>
+        <p>Accelerating Success in Careers, Education and Development. We help you discover better jobs and teach you how to get them.</p>
+    </div>
+
+    <!-- Example row of columns -->
+    <div class="row">
+        <div class="span4 circle-header">
+            <h2>Discover Jobs</h2>
+            <p>We help you find better paying jobs and understand the requirements.</p>
+            <p><a href="@Url.Action("Index", "Job")" class="btn btn-primary">View Details &#62;</a></p>
+            @*<p>@Html.ActionLink("View details &#62;", "Index", "Job", new { @class="btn btn-primary" })</p>*@
+        </div>
+        <div class="span4 circle-header">
+            <h2>Classroom</h2>
+            <p><a href="@Url.Action("Index", "Classroom")" class="btn btn-primary">View Details &#62;</a></p>
+        </div>
+        <div class="span4 circle-header">
+            <h2>Start a Business</h2>
+            <p><a class="btn disabled" href="#">Coming soon</a></p>
+        </div>
+    </div>
+
+    <hr>
+</div>
+<!-- /container -->
