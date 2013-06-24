@@ -17,9 +17,19 @@ namespace BlueEconomics.Data.XML.Reader
         {
             var import = new ImportData();
 
-            import.ClearDatabase();
+            Console.WriteLine("Creating Database");
 
+            //import.ClearDatabase();
+
+            Console.WriteLine("Starting data import");
             import.StartImport();
+
+            Console.WriteLine("Creating Filters");
+            import.CreateFrilters();
+
+            Console.WriteLine("All tasks done.Enter to finish");
+
+            Console.ReadKey();
         }
     }
 }

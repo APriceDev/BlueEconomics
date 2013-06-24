@@ -9,12 +9,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
+    <link href="@Url.Content("~/Content/css/reset.css")" rel="stylesheet"/>
     <link href="@Url.Content("~/Content/css/bootstrap.min.css")" rel="stylesheet" />
     <link href="@Url.Content("~/Content/css/bootstrap-responsive.min.css")" rel="stylesheet" />
     <link href="@Url.Content("~/Content/css/main.css")" rel="stylesheet"/>
-    <script src="@Url.Content("~/Content/js/jquery-1.9.1.min.js")"></script>
-    <script src="@Url.Content("~/Content/js/bootstrap.min.js")"></script>
-    <script src="@Url.Content("~/Content/js/modernizr-2.6.2.js")"></script>
 </head>
 <body>
     <!--[if lt IE 7]>
@@ -27,6 +25,12 @@
     <footer>
         <p>&#169; Blue Economics 2013</p>
     </footer>
+    <script src="@Url.Content("~/Content/js/jquery-1.9.1.min.js")"></script>
+    <script src="@Url.Content("~/Content/js/bootstrap.min.js")"></script>
+    <script src="@Url.Content("~/Content/js/modernizr-2.6.2.js")"></script>
+    <script src="@Url.Content("~/Content/js/modernizr-2.6.2-respond-1.1.0.min.js")"></script>
+    <script src="@Url.Content("~/Content/js/main.js")"></script>
+    @Html.Partial("_GoogleAnalytics");
     @RenderSection("scripts", required: false)
 </body>
 </html>

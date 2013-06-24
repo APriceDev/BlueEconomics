@@ -1,24 +1,47 @@
-﻿using System.Web.Mvc;
+﻿using System.Linq;
+using System.Web.Mvc;
+using BlueEconomics.Platform.Infrastructure;
+using BlueEconomics.Web.ViewModels;
 
 namespace BlueEconomics.Web.Controllers
 {
     public class JobController : Controller
     {
+        private readonly BlueDbContext context;
+
         public JobController()
         {
+            context= new BlueDbContext();
         }
 
         ////
         //// GET: /Job/
 
-        //public ActionResult Index()
-        //{
-        //    var model = new JobViewModel();
+        public ActionResult Index()
+        {
+            var model = new JobViewModel();
 
-        //    model.Industries = context.Industries.OrderBy(i => i.Name).ToList();
+            var filters = context.Filters.OrderBy(f=>f.Order).ToList();
 
-        //    return View(model);
-        //}
+            var categories = filters.Select(f => f.Category).Distinct();
+
+            foreach (var category in categories)
+            {
+                var filterVM = new FilterViewModel();
+                filterVM.Category = category;
+
+                foreach (var filter in filters.Where(f=>f.Category== category))
+                {
+                    filterVM.Itens.Add(new FilterItem(filter.FilterId,filter.Name,filter.Quantity));
+                }  
+  
+                model.Filters.Add(filterVM);
+            }
+
+            return View(model);
+        }
+
+
 
         ////JSON Calls;
 

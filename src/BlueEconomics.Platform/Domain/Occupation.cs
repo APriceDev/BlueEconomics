@@ -3,6 +3,13 @@
     public class Occupation : EntityBase
     {
         public int IndustryId { get; set; }
+        public Industry Industry { get; set; }
+        
+        public int WorkExperienceId { get; set; }
+        public WorkExperience WorkExperience { get; set; }
+
+        public int? EducationLevelId { get; set; }
+        public EducationLevel EducationLevel { get; set; }
 
         public string Name { get; set; }
 
@@ -16,12 +23,8 @@
 
         public decimal? MedianPayHourly { get; set; }
 
-        public string EntryLevelEducation { get; set; }
-
-        public string WorkExperience { get; set; }
-
         public double NumberOfJobs { get; set; }
 
-        public int? EmploymentOpenings { get; set; }
+        public int EmploymentOpenings { get; set; }
     }
 }

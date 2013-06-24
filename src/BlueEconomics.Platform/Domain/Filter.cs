@@ -5,13 +5,12 @@
 // Team: Michel Oliveira and João Bosco
 namespace BlueEconomics.Platform.Domain
 {
-    public class Filter:EntityBase
+    public class Filter : EntityBase
     {
-        public string Name { get; set; }
         public string Category { get; set; }
+        public string Name { get; set; }
         public int Quantity { get; set; }
         public int Order { get; set; }
-        public string TableFieldName { get; set; }
-        public string FilterId { get; set; }
+        public int FilterId { get; set; }
     }
 }

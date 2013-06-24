@@ -3,25 +3,21 @@
 // 27
 // Michel Oliveira
 
+using System.Collections.Generic;
+
 namespace BlueEconomics.Web.ViewModels
 {
     public class JobViewModel
     {
-        //public List<Industry> Industries { get; set; }
 
-        public int? IdIndustry { get; set; }
+        public JobViewModel()
+        {
+            Filters=new List<FilterViewModel>();
 
-        public bool FilterByEducationNone { get; set; }
-        
-        public bool FilterByEducationLessThaOneYear { get; set; }
+        }
 
-        public bool FilterByEducationOneToFiveYear { get; set; }
+        public List<FilterViewModel> Filters { get; set; }
 
-        public bool FilterByEducationOther { get; set; }
-
-        public bool SortByWage { get; set; }
-
-        public bool SortByScore { get; set; }
 
     }
 }

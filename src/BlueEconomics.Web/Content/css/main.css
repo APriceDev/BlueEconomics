@@ -1,7 +1,19 @@
+body{
+	margin:0;
+	padding:0;
+}
+
+
 footer{
-	text-align: center;
+	text-align: center
 	font-size: .8em;
 }
+.force-bottom{
+	font-size: .9em;
+	vertical-align: bottom;
+}
+
+
 
 .hero-unit
 {
@@ -60,6 +72,10 @@ footer{
 .industry li.highlight{
 	background-color: #3333CC;
 	color: #FF0;
+}
+
+#nyc-highlight{
+	color: #AAA;
 }
 
 .well {
@@ -164,6 +180,67 @@ margin-top:10px;
 background-color:#3399CC;
 }
 
+
+/* home page scroll */
+
+#home { 
+	background: url(../img/cityscape.png) 50% 0 no-repeat fixed;
+	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+  	background-size: cover;
+	height: 1000px;  
+	margin: 0 auto; 
+    width: 100%; 
+    max-width: 1920px; 
+    position: relative; 
+    box-shadow: 0 0 50px rgba(0,0,0,0.8);
+}
+#about { 
+	/*background: url(../img/about.jpg) 50% 0 no-repeat fixed; */
+	background-color: #022262;
+	height: 800px;
+	margin: 0 auto; 
+    width: 100%; 
+    max-width: 1920px; 
+    position: relative; 
+    box-shadow: 0 0 50px rgba(0,0,0,0.8);
+}
+
+/* Introduction */
+#home #home-inner { 
+	color: #FFF;
+	font-size: 5em;
+	font-weight: bold;
+	height: 458px; 
+	position: absolute; 
+	top: 291px; 
+	width: 100%; 
+	text-align: center;
+
+}
+
+#home-nav{
+	font-size: .3em;
+	font-weight: normal;
+}
+
+#home-nav > div > p > a{
+	color: #FFF;
+}
+
+
+#about #about-inner { 
+	color: #FFF;
+	font-size: 1.5em;
+	font-weight: bold;	
+	height: 458px; 
+	position: absolute;
+	top: 291px; 
+	width: 100%;
+	text-align: center;
+}
+
 /* main menu */
 
 /*
@@ -196,15 +273,3 @@ background-color:#3399CC;
   background-color: #3366CC;
 }
 */
-
-
-
-
-
-
-
-
-
-
-
-

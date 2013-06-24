@@ -81,9 +81,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="BlueDB.sdf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Data\xml-compilation.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

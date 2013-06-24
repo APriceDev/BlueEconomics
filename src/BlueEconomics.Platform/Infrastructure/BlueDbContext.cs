@@ -12,12 +12,14 @@ namespace BlueEconomics.Platform.Infrastructure
     public class BlueDbContext: DbContext 
     {
         public BlueDbContext()
-            : base("BlueDB")
+            : base("Name=BlueDBConString")
         {
             
         }
 
-        public DbSet<EducationScore> EducationScores { get; set; }
+        public DbSet<EducationLevel> EducationLevels { get; set; }
+
+        public DbSet<WorkExperience> WorkExperiences { get; set; }
 
         public DbSet<Filter> Filters { get; set; }
 

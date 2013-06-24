@@ -3,226 +3,176 @@
 @{
     ViewBag.Title = "ASCEND Project | Jobs";
 }
-<style>
-    #jobsList li {
-        list-style: none;
-    }
-</style>
 @section scripts
 {
-    <script src="@Url.Content("~/Scripts/accounting.min.js")"></script>
+    <script src="@Url.Content("~/Content/js/accounting.min.js")"></script>
     <script>
-        function showOcuppationDetail(jobAnualIncome, jobHourlyWage, jobEntryRequirement, jobEntryEducation, jobDescription) {
-
-            if (jobAnualIncome == null)
-                jobAnualIncome = "0";
-
-            if (jobHourlyWage == null)
-                jobHourlyWage = "0";
-
-            $('#anualIncome').empty().html(accounting.formatMoney(jobAnualIncome));
-            $('#hourlyWage').empty().html(accounting.formatMoney(jobHourlyWage));
-            $('#entryRequirement').empty().html(jobEntryRequirement);
-            $('#entryEducation').empty().html(jobEntryEducation);
-            $('#jobDescription').empty().html(jobDescription);
-            $('#divJobDescription').show();
-        }
-
-        function buildOcupationItem(occupation) {
-            var html = '<li style="cursor: pointer" ' +
-                ' onclick="showOcuppationDetail(\'' + occupation.MedianPayAnnual + '\',\'' + occupation.MedianPayHourly + '\',' +
-                ' \'' + occupation.WorkExperience + '\',\'' + occupation.EntryLevelEducation + '\',\'' + occupation.Description + '\');">';
-
-            html += '<h5 >' + occupation.Name + '</h5>';
-
-            if (occupation.WorkExperience == '' || occupation.WorkExperience == 'None')
-                occupation.WorkExperience = 'No experience required';
-
-            html += accounting.formatMoney(occupation.MedianPayHourly) + '/hour -' + occupation.WorkExperience;
-
-            if (occupation.NumberOfJobs == 1400)
-                html += '<span class="ugly"></span>';
-            else {
-                if (occupation.NumberOfJobs > 357255)
-                    html += '<span class="good"></span>';
-                else
-                    html += '<span class="bad"></span>';
-            }
-
-            html += '</li>';
-
-            return html;
-        }
-
-        $(function () {
-            $('.industryItem').click(function () {
-                var idIndustry = $(this).attr('data-industryId');
-                $('#IdIndustry').val(idIndustry);
-                $('.industryItem').not($(this)).removeClass('selected');
-                $(this).addClass('selected');
-                $('#divJobDescription').hide();
-
-                filterOccupation();
-            });
-        });
-    </script>
-
-    <script>
-        function buildEducationFilter() {
-            var educations = "";
-
-            if ($("#FilterByEducationNone").is(':checked') == true)
-                educations += "None,";
-
-            if ($("#FilterByEducationLessThaOneYear").is(':checked') == true)
-                educations += "LessThan1Year,";
-
-            if ($("#FilterByEducationOneToFiveYear").is(':checked') == true)
-                educations += "1to5Years,";
-
-            if ($("#FilterByEducationOther").is(':checked') == true)
-                educations += "Other,";
-
-            return educations;
-        }
-
-        function filterOccupation() {
-            $('.industryItem').removeClass('selected');
-            $('#divJobDescription').hide();
-
-            var idIndustry = $('#IdIndustry').val();
-
-            var searchTerm = $('#txtSearch').val();
-
-            var educationFilter = buildEducationFilter();
-
-            var sortType = "NumberOfJobs";
-
-            if ($("#SortByScore").is(':checked') == true)
-                sortType = "Score";
-
-            $('#divJobDescription').hide();
-
+        function buildOcupationDetail(occupationId) {
             $.ajax({
-                url: '@Url.Action("FilterOccupationBy")',
-                data: { criteria: searchTerm, education: educationFilter, sortType: sortType, idIndustry: idIndustry },
-                success: function (data) {
-                    var jobList = $('#jobsList');
-                    jobList.empty();
-                    if (data.Status == 'OK') {
-                        if (data.Occupations.length > 0) {
-                            $(data.Occupations).each(function () {
-                                jobList.append(buildOcupationItem(this));
-                                $("li[data-industryid|='" + this.IndustryID + "']").addClass('selected');
-                            });
-                        } else {
-                            jobList.append('Jobs not found, please try another search.');
-                        }
+                url: "api/occupation/" + occupationId,
+                beforeSend: function() {
+                    $('#jobDetail').hide();
+                },
+                success: function(data) {
+                    if (data != null) {
+                        $('#lblOccupationName').html(data.Name);
+                        $('#lblOccupationDescription').html(data.Description);
+                        $('#lblIndustryName').html(data.Industry.Name);
+                        $('#lblMedianPayAnnual').html(accounting.formatMoney(data.MedianPayAnnual));
+                        $('#lblMedianPayHourly').html(accounting.formatMoney(data.MedianPayHourly));
+                        $('#lblNumberofJobs').html(data.NumberOfJobs);
+                        $('#lblEmploymentOpenings').html(data.EmploymentOpenings);
+                        $('#lblEducationLevelEntry').html(data.EducationLevel.Name);
+                        $('#lblWorkExperience').html(data.WorkExperience.Name);
+
+                        $('#jobDetail').show();
                     } else {
-                        jobList.append('Error getting jobs, please try again.');
+                        alert('Sorry, try again.');
                     }
                 },
-                error: function (a, b, c) {
-                    alert('Error! ' + a);
+                error: function() {
+                    alert('Sorry, try again.');
+                }
+            });
+        }
+    </script>
+    <script>
+        function buildOccupationTemplate(occupationItem) {
+            console.log(occupationItem.MedianPayHourly);
+            var template = '<li onclick="javascript:buildOcupationDetail(' + occupationItem.Id + ')"><strong>' + occupationItem.Name + '</strong></br>' + accounting.formatMoney(occupationItem.MedianPayHourly) + '/hour ' + occupationItem.WorkExperience + '</br><span class="score"></span></li>';
+            return template;
+        }
+    </script>
+    <script>
+        function BuildSearchTerm() {
+            var searchTerm = $('#searchTerm');
+
+            var searchText = "";
+            searchTerm.val("");
+
+            $('.filterItem:checked').each(function() {
+                var category = $(this).attr('data-FilterCategory');
+                var id = $(this).attr('data-FilterId');
+
+                if (searchText == "")
+                    searchText += category + '=' + id;
+                else {
+                    searchText += ',' + category + '=' + id;
                 }
             });
 
+            var text = $('#txtSearch').val();
+
+            if (text.length > 0)
+                searchText += ",Filter=" + text;
+
+            searchTerm.val(searchText);
         }
 
-        function searchJob() {
-            var searchTerm = $('#txtSearch').val();
+        function ExecuteSearch() {
+            var searchTerm = $('#searchTerm').val();
 
-            if ($.trim(searchTerm).length == 0) {
-                alert('Invalid search term');
-                return;
+            if (searchTerm.length > 0) {
+                $.ajax({
+                    url: "api/occupation?criteria=" + searchTerm,
+                    beforeSend: function() {
+                        $('#occupationList').empty();
+                        $('#jobDetail').hide();
+                    },
+                    success: function(data) {
+                        $.each(data, function() {
+                            var occupationItem = buildOccupationTemplate(this);
+                            $('#occupationList').append(occupationItem);
+                        });
+                    },
+                    error: function() {
+                        alert('Sorry, try again.');
+                    }
+                });
+            } else {
+                $('#occupationList').empty();
+                $('#jobDetail').hide();
             }
-
-            $('#IdIndustry').val("");
-
-            filterOccupation();
         }
 
-        $(function () {
-            $('#btnSearch').click(function () {
-                searchJob();
-            });
-
-            $('#txtSearch').keypress(function (key) {
-                if (key.keyCode == 13)
-                    searchJob();
+        $(function() {
+            $('.filterItem, #btnSearch').click(function() {
+                BuildSearchTerm();
+                ExecuteSearch();
             });
         });
     </script>
-
-    <script>
-        $(function () {
-            $("#FilterByEducationNone,#FilterByEducationLessThaOneYear, #FilterByEducationOneToFiveYear, #FilterByEducationOther,#SortByWage,#SortByScore").click(function () {
-                filterOccupation();
-            });
-        });
-    </script>
-
-    <style>
-        body {
-            padding-top: 10px;
-            padding-bottom: 40px;
-        }
-    </style>
 }
-
-@Html.HiddenFor(m => m.IdIndustry)
-<!-- end nav row -->
+<input type="hidden" id="searchTerm" />
 <div class="row">
     <!-- search bar -->
     <div class="span12">
-        <div class="navbar-form form-search">
+        <p>
             <span>
-                <input type="text" data-provide="typeahead" class="span4 input-medium search-query" id="txtSearch" placeholder="Search for jobs..."></span>
+                <input type="text" data-provide="typeahead" class="span4 input-medium search-query " placeholder="Search for jobs..." id="txtSearch"></span>
             <span>
                 <button type="submit" class="btn btn-primary force-bottom" id="btnSearch"><i class="icon-search icon-white"></i>Search</button></span>
-        </div>
+        </p>
     </div>
-    <!-- end search bar -->
-</div>
-<!-- end first row -->
-<div class="row">
-    <div class="span4">
-        <h4>Filters</h4>
-        <div class="well industry">
-            <div>
-                <strong>Education</strong>
-                <ul>
-                <li><input type="checkbox" id="checkbox-1-1" class="regular-checkbox" /><span>Associate Degree (35)</span></li>
-                <li><input type="checkbox" id="checkbox-1-2" class="regular-checkbox" /><span>On-the-job training (79)</span></li>
-                </ul>
+    <!-- search bar -->
+    <div class="row">
+        <div class="span4">
+            <h4>Filters</h4>
+            <div class="well industry">
+                @{
+                    foreach (var filter in Model.Filters)
+                    {
+                    <div>
+                        <strong>@filter.Category</strong>
+                        <ul>
+                            @foreach (var item in filter.Itens)
+                            {
+                                <li>
+                                    <label>
+                                        <input type="checkbox" data-FilterId="@item.Id" data-FilterCategory="@filter.Category" class="regular-checkbox filterItem" /><span>@item.Name</span>
+                                    </label>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                    }
+                }
             </div>
         </div>
-    </div>
-    <div class="span4 no-gutter">
-        <h4>Jobs</h4>
-        <ul id="jobsList" class="well jobs"></ul>
-    </div>
-    <div id="divJobDescription" style="display: none" class="span4 no-gutter">
-        <h4>Job Detail</h4>
-        <div class="well detail">
-            <h5>Annual Income</h5>
-            <span id="anualIncome"></span>
-            <h5>Hourly Wage</h5>
-            <span id="hourlyWage"></span>
-            <h5>Education</h5>
-            <span id="entryEducation"></span>
-            <h5>Entry Requirement</h5>
-            <span id="entryRequirement"></span>
-            <h5>Job Description</h5>
-            <span id="jobDescription"></span>
-            <h5>School and Training Institutions</h5>
-            <ul>
-                <li>School 1</li>
-                <li>School 2</li>
-                <li>Training Center 3</li>
+        <div class="span4 no-gutter">
+            <h4>Jobs</h4>
+            <ul class="well jobs" id="occupationList">
             </ul>
         </div>
+        <div class="span4 no-gutter">
+            <h4>Job Detail</h4>
+            <div class="well detail">
+                <div id="jobDetail" style="display: none">
+                    <h4><span id="lblOccupationName"></span></h4>
+                    <h5>Industry</h5>
+                    <span id="lblIndustryName"></span>
+
+                    <h5>Annual Income</h5>
+                    <span id="lblMedianPayAnnual"></span>
+
+                    <h5>Hourly Wage</h5>
+                    <span id="lblMedianPayHourly"></span>
+
+                    <h5>Number Of Jobs</h5>
+                    <span id="lblNumberofJobs"></span>
+
+                    <h5>Employment Openings</h5>
+                    <span id="lblEmploymentOpenings"></span>
+
+                    <h5>Entry Requirement</h5>
+                    <span id="lblEducationLevelEntry"></span>
+
+                    <h5>Job Description</h5>
+                    <span id="lblOccupationDescription"></span>
+                </div>
+            </div>
+        </div>
+        <!-- end second row -->
     </div>
 </div>
-<!-- end second row -->
 <hr>

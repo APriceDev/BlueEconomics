@@ -65,21 +65,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Domain\EducationScore.cs" />
+    <Compile Include="Domain\EducationLevel.cs" />
     <Compile Include="Domain\EntityBase.cs" />
     <Compile Include="Domain\Filter.cs" />
     <Compile Include="Domain\GrowthScore.cs" />
     <Compile Include="Domain\Industry.cs" />
     <Compile Include="Domain\LevelType.cs" />
     <Compile Include="Domain\Occupation.cs" />
+    <Compile Include="Domain\WorkExperience.cs" />
     <Compile Include="Infrastructure\BlueDbContext.cs" />
-    <Compile Include="Migrations\201306182307588_Initial.cs" />
-    <Compile Include="Migrations\201306182307588_Initial.Designer.cs">
-      <DependentUpon>201306182307588_Initial.cs</DependentUpon>
+    <Compile Include="Infrastructure\BlueDbInitializer.cs" />
+    <Compile Include="Infrastructure\DBSeed.cs" />
+    <Compile Include="Migrations\201306191759256_Initial.cs" />
+    <Compile Include="Migrations\201306191759256_Initial.Designer.cs">
+      <DependentUpon>201306191759256_Initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201306182335301_AddColumnAliasToLevelType.cs" />
-    <Compile Include="Migrations\201306182335301_AddColumnAliasToLevelType.Designer.cs">
-      <DependentUpon>201306182335301_AddColumnAliasToLevelType.cs</DependentUpon>
+    <Compile Include="Migrations\201306191842454_AddWorkExperienceAndOccupationChanges.cs" />
+    <Compile Include="Migrations\201306191842454_AddWorkExperienceAndOccupationChanges.Designer.cs">
+      <DependentUpon>201306191842454_AddWorkExperienceAndOccupationChanges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201306200140059_AlterFilterTable.cs" />
+    <Compile Include="Migrations\201306200140059_AlterFilterTable.Designer.cs">
+      <DependentUpon>201306200140059_AlterFilterTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201306240153251_ChangeOccupationTable.cs" />
+    <Compile Include="Migrations\201306240153251_ChangeOccupationTable.Designer.cs">
+      <DependentUpon>201306240153251_ChangeOccupationTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201306240237278_AddForeignKeyIndustryInOccupationTable.cs" />
+    <Compile Include="Migrations\201306240237278_AddForeignKeyIndustryInOccupationTable.Designer.cs">
+      <DependentUpon>201306240237278_AddForeignKeyIndustryInOccupationTable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
@@ -115,11 +130,20 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201306182307588_Initial.resx">
-      <DependentUpon>201306182307588_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201306191759256_Initial.resx">
+      <DependentUpon>201306191759256_Initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201306182335301_AddColumnAliasToLevelType.resx">
-      <DependentUpon>201306182335301_AddColumnAliasToLevelType.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201306191842454_AddWorkExperienceAndOccupationChanges.resx">
+      <DependentUpon>201306191842454_AddWorkExperienceAndOccupationChanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201306200140059_AlterFilterTable.resx">
+      <DependentUpon>201306200140059_AlterFilterTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201306240153251_ChangeOccupationTable.resx">
+      <DependentUpon>201306240153251_ChangeOccupationTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201306240237278_AddForeignKeyIndustryInOccupationTable.resx">
+      <DependentUpon>201306240237278_AddForeignKeyIndustryInOccupationTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
