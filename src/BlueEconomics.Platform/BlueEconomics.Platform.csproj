@@ -67,6 +67,10 @@
   <ItemGroup>
     <Compile Include="Domain\EducationLevel.cs" />
     <Compile Include="Domain\EntityBase.cs" />
+    <Compile Include="Domain\FAQ_Question.cs" />
+    <Compile Include="Domain\FAQ_QuestionSource.cs" />
+    <Compile Include="Domain\FAQ_Response.cs" />
+    <Compile Include="Domain\FAQ_ResponseSource.cs" />
     <Compile Include="Domain\Filter.cs" />
     <Compile Include="Domain\GrowthScore.cs" />
     <Compile Include="Domain\Industry.cs" />
@@ -95,6 +99,10 @@
     <Compile Include="Migrations\201306240237278_AddForeignKeyIndustryInOccupationTable.cs" />
     <Compile Include="Migrations\201306240237278_AddForeignKeyIndustryInOccupationTable.Designer.cs">
       <DependentUpon>201306240237278_AddForeignKeyIndustryInOccupationTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201307251446445_FAQ.cs" />
+    <Compile Include="Migrations\201307251446445_FAQ.Designer.cs">
+      <DependentUpon>201307251446445_FAQ.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
@@ -144,6 +152,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201306240237278_AddForeignKeyIndustryInOccupationTable.resx">
       <DependentUpon>201306240237278_AddForeignKeyIndustryInOccupationTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201307251446445_FAQ.resx">
+      <DependentUpon>201307251446445_FAQ.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

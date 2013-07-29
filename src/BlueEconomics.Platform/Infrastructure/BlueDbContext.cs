@@ -31,6 +31,14 @@ namespace BlueEconomics.Platform.Infrastructure
 
         public DbSet<Occupation> Ocuppations { get; set; }
 
+        public DbSet<FAQ_Question> FAQ_Questions { get; set; }
+
+        public DbSet<FAQ_ResponseSource> FAQ_ResponseSources { get; set; }
+
+        public DbSet<FAQ_Response> FAQ_Responses { get; set; }
+
+        public DbSet<FAQ_QuestionSource> FAQ_QuestionSources { get; set; }   
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
