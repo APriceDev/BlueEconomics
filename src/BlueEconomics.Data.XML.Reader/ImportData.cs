@@ -295,7 +295,7 @@ namespace BlueEconomics.Data.XML.Reader
 
             using (BlueDbContext context = new BlueDbContext())
             {
-      
+
                 // Delete existing data
                 StringBuilder sb = new StringBuilder();
 
@@ -344,9 +344,9 @@ namespace BlueEconomics.Data.XML.Reader
                             new FAQ_Question()
                             {
                                 Text = (question + " " + bufferOCCname).Trim(),
-                                OccupationId = oc.Id
+                                FAQ_QuestionSource = fqs,
+                                Occupation = oc
                             };
-
 
                         int responseIndex = Array.FindIndex(Occupation_Names_Healthcare, element => element.Contains(oc.Name));
 
@@ -358,16 +358,14 @@ namespace BlueEconomics.Data.XML.Reader
                         // Instantiate a new FAQ_Response
                         var fr =
                              new FAQ_Response()
-                            {
-                                Text = bufferResponseContent
-                            };
+                             {
+                                 Text = bufferResponseContent,
+                                 FAQ_ResponseSource = frs
+                             };
 
                         //  Incorporate new question and response according to the entity model
-                        fq.FAQ_Responses.Add(fr);    // Add the response to the question
-                        fr.FAQ_Questions.Add(fq);      // Add the question to the response
-
-                        fqs.FAQ_Questions.Add(fq);   // Add the question to the question source
-                        frs.FAQ_Responses.Add(fr);   // Add the response to the response source
+                        fq.FAQ_Responses.Add(fr);    // Link the response to the question
+                        context.FAQ_Questions.Add(fq);
 
                     }
 
@@ -378,6 +376,7 @@ namespace BlueEconomics.Data.XML.Reader
             }
 
         }
+
 
         //private static decimal calcIncomeScore(decimal income)
         //{

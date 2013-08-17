@@ -7,18 +7,20 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BlueEconomics.Platform.Domain
 {
-    public class FAQ_ResponseSource 
+    public class FAQ_ResponseSource
     {
-         public FAQ_ResponseSource()
+        public FAQ_ResponseSource()
         {
-            FAQ_Responses = new HashSet<FAQ_Response>();
+            FAQ_QuestionAssignments = new HashSet<FAQ_QuestionAssignment>();
         }
 
         [Key]
         public int Id { get; set; }
+        [Required, MaxLength(200)]
         public string Organization { get; set; }
 
-        // Associated with zero or more FAQ_Responses
-        public ICollection<FAQ_Response> FAQ_Responses { get; set; }
+        // Navigational property
+        public virtual HashSet<FAQ_QuestionAssignment> FAQ_QuestionAssignments { get; set; }
+
     }
 }

@@ -37,7 +37,9 @@ namespace BlueEconomics.Platform.Infrastructure
 
         public DbSet<FAQ_Response> FAQ_Responses { get; set; }
 
-        public DbSet<FAQ_QuestionSource> FAQ_QuestionSources { get; set; }   
+        public DbSet<FAQ_QuestionSource> FAQ_QuestionSources { get; set; }
+
+        public DbSet<FAQ_QuestionAssignment> FAQ_QuestionAssignments { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

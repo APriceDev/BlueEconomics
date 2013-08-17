@@ -27,9 +27,6 @@ namespace BlueEconomics.Data.XML.Reader
             Console.WriteLine("Creating Filters");
             import.CreateFrilters();
 
-            Console.WriteLine("Loading FAQ Data");
-            import.SetupFAQTables();
-
             Console.WriteLine("All tasks done.Enter to finish");
 
             Console.ReadKey();

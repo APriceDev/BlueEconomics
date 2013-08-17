@@ -68,6 +68,7 @@
     <Compile Include="Domain\EducationLevel.cs" />
     <Compile Include="Domain\EntityBase.cs" />
     <Compile Include="Domain\FAQ_Question.cs" />
+    <Compile Include="Domain\FAQ_QuestionAssignment.cs" />
     <Compile Include="Domain\FAQ_QuestionSource.cs" />
     <Compile Include="Domain\FAQ_Response.cs" />
     <Compile Include="Domain\FAQ_ResponseSource.cs" />
